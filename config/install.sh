@@ -48,7 +48,7 @@ sudo mkdir /var/log/odoo
 sudo adduser --system --quiet --shell=/bin/bash --home=/home/odoo --gecos 'ODOO' --group odoo
 
 # USER
-sudo su - postgres -c "createuser -s odoo --interactive --pwprompt" 2> /dev/null || true
+sudo su - postgres -c "createuser -s odoo --interactive --pwprompt"
 
 # CHOWN
 sudo chown -R odoo:odoo /odoo/*
