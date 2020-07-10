@@ -1,0 +1,14 @@
+version: "3"
+services:
+  ubuntu-os:
+    build: ubuntu
+    container_name: odoo-on-ubuntu
+    volumes:
+      - ./odoo:/odoo/odoo-server
+      - ./config:/
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8069:8069"
+      - "5432:5432"
