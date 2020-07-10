@@ -21,6 +21,9 @@ sudo apt-get install nano python3 python3-pip python3-suds \
     python-decorator python-requests python-passlib python-pil \
     node-clean-css node-less python-gevent postgresql -y
 
+# run postgres
+sudo service postgresql start
+
 # PIP
 sudo python3 -m pip install -r ./requirements.txt
 
@@ -45,7 +48,7 @@ sudo mkdir /var/log/odoo
 sudo adduser --system --quiet --shell=/bin/bash --home=/home/odoo --gecos 'ODOO' --group odoo
 
 # USER
-sudo su - postgres -c "createuser -s odoo" 2> /dev/null || true
+sudo su - postgres -c "createuser -s odoo --interactive --pwprompt" 2> /dev/null || true
 
 # CHOWN
 sudo chown -R odoo:odoo /odoo/*
@@ -53,7 +56,6 @@ sudo chown odoo:odoo /var/log/odoo
 sudo chown odoo:odoo /etc/odoo-server.conf
 sudo chmod 640 /etc/odoo-server.conf
 
-
 # sudo SERVER
 sudo cd /odoo/odoo-server 
-sudo ./odoo-bin -c /etc/odoo-server.conf -s
+./odoo-bin -c /etc/odoo-server.conf -r "odoo" -w "123456" --db_host "127.0.0.1" --limit-time-real=0 -s

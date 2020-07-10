@@ -5,7 +5,7 @@ services:
     container_name: odoo-on-ubuntu
     volumes:
       - ./odoo:/odoo/odoo-server
-      - ./config:/
+      - ./config:/home/docker
     tty: true
     ports:
       - "80:80"
