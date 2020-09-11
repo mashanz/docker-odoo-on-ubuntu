@@ -1,8 +1,8 @@
 version: "3"
 services:
   ubuntu-os:
-    image: mashanz/docker-odoo-on-ubuntu_ubuntu-os:firstpush
-    container_name: odoo13-ubuntu
+    build: ubuntu
+    container_name: odoo-on-ubuntu
     volumes:
       - ./odoo:/odoo/odoo-server
       - ./config:/home/docker
